@@ -22,17 +22,5 @@ namespace ASIO.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DefaultDevice {
-            get {
-                return ((string)(this["DefaultDevice"]));
-            }
-            set {
-                this["DefaultDevice"] = value;
-            }
-        }
     }
 }

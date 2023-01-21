@@ -77,6 +77,7 @@ namespace ASIO
             ToolStripMenuItem OpenMainWindowItem = new ToolStripMenuItem("Open ASIO devices info reader");
             OpenMainWindowItem.Click += OpenMainWindowItem_Click;
             OpenMainWindowItem.ToolTipText = "Open ASIO devices info reader window";
+            OpenMainWindowItem.Font = new Font(OpenMainWindowItem.Font, OpenMainWindowItem.Font.Style | FontStyle.Bold);
             contextMenuStrip.Items.Add(OpenMainWindowItem);
             
 
@@ -84,7 +85,6 @@ namespace ASIO
             ToolStripMenuItem RescanMenuItem = new ToolStripMenuItem("Rescan ASIO devices");
             RescanMenuItem.Click += RescanMenuItem_Click;
             RescanMenuItem.ToolTipText = "Rescan ASIO devices in the system";
-            RescanMenuItem.Font = new Font(RescanMenuItem.Font, RescanMenuItem.Font.Style | FontStyle.Bold);
             contextMenuStrip.Items.Add(RescanMenuItem);
 
             // Add separator
@@ -233,11 +233,14 @@ namespace ASIO
         // Rescan ASIO devices: read ASIO device list from Windows Registry and create notification
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            OpenMainWindowItem_Click(sender, e);
+            /*
             ContextMenuFill();
 
             notifyIcon.BalloonTipText = "Rescan ASIO devices complete";
             notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
             notifyIcon.ShowBalloonTip(1000);
+            */
         }
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -271,7 +274,7 @@ namespace ASIO
         private void button_Rescan_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
-            richTextBox1.Text = "No selected device";
+            richTextBox1.Text = "No information";
             RescanMenuItem_Click(sender, e);
         }
 

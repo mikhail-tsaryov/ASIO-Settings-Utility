@@ -136,11 +136,15 @@ namespace ASIO
         // Rescan ASIO devices: read ASIO device list from Windows Registry and create notification
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ContextMenuFill();
+            if (e.Button == MouseButtons.Left)
+            {
+                ContextMenuFill();
 
-            notifyIcon.BalloonTipText = "Rescan ASIO devices complete";
-            notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
-            notifyIcon.ShowBalloonTip(1000);
+                notifyIcon.BalloonTipText = "Rescan ASIO devices complete";
+                notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+                notifyIcon.ShowBalloonTip(1000);
+            }
+            
         }
     }
 }

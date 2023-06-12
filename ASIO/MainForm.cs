@@ -190,7 +190,6 @@ namespace ASIO
 
                 using (var asioOutput = new AsioOut(SelectedDeviceName))
                 {
-
                     //AsioChannelInfo asioInfo = ;
                     richTextBox1.AppendText("Name: " + asioOutput.DriverName + "\r\n");
                     richTextBox1.AppendText("Input channels: " + asioOutput.DriverInputChannelCount.ToString() + "\r\n");
@@ -220,6 +219,9 @@ namespace ASIO
                     richTextBox1.AppendText("192000 Hz - " + (asioOutput.IsSampleRateSupported(192000) ? ("supported") : ("not supported")) + "\r\n");
                     richTextBox1.AppendText("352800 Hz - " + (asioOutput.IsSampleRateSupported(352800) ? ("supported") : ("not supported")) + "\r\n");
                     richTextBox1.AppendText("384000 Hz - " + (asioOutput.IsSampleRateSupported(384000) ? ("supported") : ("not supported")) + "\r\n");
+                
+
+
                 }
             }
             catch (Exception ex)
@@ -233,7 +235,8 @@ namespace ASIO
         // Rescan ASIO devices: read ASIO device list from Windows Registry and create notification
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            OpenMainWindowItem_Click(sender, e);
+            if (e.Button == MouseButtons.Left) 
+                OpenMainWindowItem_Click(sender, e);
             /*
             ContextMenuFill();
 
